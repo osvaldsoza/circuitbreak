@@ -2,8 +2,10 @@ package br.com.monktec.avalicao.controller;
 
 import br.com.monktec.avalicao.model.Avaliacao;
 import br.com.monktec.avalicao.repository.AvaliacaoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -11,14 +13,11 @@ import java.util.List;
 @RequestMapping("/avaliacoes")
 public class AvaliacaoController {
 
-    @Autowired
-    private AvaliacaoRepository avaliacaoRepository;
+    private final AvaliacaoRepository avaliacaoRepository;
 
-
-//    @GetMapping
-//    public List<Avaliacao> findAll(){
-//        return avaliacaoRepository.findAll();
-//    }
+    public AvaliacaoController(AvaliacaoRepository avaliacaoRepository){
+        this.avaliacaoRepository = avaliacaoRepository;
+    }
 
     @GetMapping
     public List<Avaliacao> buscaAvaliacoesPorProduto(@RequestParam("produtoId") Long produtoId){
