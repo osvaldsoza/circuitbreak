@@ -2,10 +2,7 @@ package br.com.monktec.avalicao.controller;
 
 import br.com.monktec.avalicao.model.Avaliacao;
 import br.com.monktec.avalicao.repository.AvaliacaoRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +16,8 @@ public class AvaliacaoController {
         this.avaliacaoRepository = avaliacaoRepository;
     }
 
-    @GetMapping
-    public List<Avaliacao> buscaAvaliacoesPorProduto(@RequestParam("produtoId") Long produtoId){
+    @GetMapping("produtoId/{produtoId}")
+    public List<Avaliacao> buscaAvaliacoesPorProduto(@PathVariable("produtoId") Long produtoId){
         return avaliacaoRepository.findAvaliacaosByProdutoId(produtoId);
     }
 }

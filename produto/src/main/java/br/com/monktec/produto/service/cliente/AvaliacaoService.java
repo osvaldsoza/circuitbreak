@@ -25,20 +25,22 @@ public class AvaliacaoService {
 
     @CircuitBreaker(name = "avaliacaoCB", fallbackMethod = "buscarTodosPorProdutoCache")
     public List<Avaliacao> buscarTodosPorProduto(Long produtoId) {
-        String url = UriComponentsBuilder
-                .fromHttpUrl("http://localhost:8080/avaliacoes")
-                .queryParam("produtoId", "{produtoId}")
-                .encode()
-                .toUriString();
 
-        final Map<String, Object> parametros = new HashMap<>();
-        parametros.put("produtoId", produtoId);
+        final String URL = "http://localhost:8080/avaliacoes/produtoId/";
+//        String url = UriComponentsBuilder
+//                .fromHttpUrl("http://localhost:8080/avaliacoes")
+//                .queryParam("produtoId", "{produtoId}")
+//                .encode()
+//                .toUriString();
+
+//        final Map<String, Object> parametros = new HashMap<>();
+//        parametros.put("produtoId", produtoId);
 
         logger.info("Buscando avaliações");
         final Avaliacao[] avaliacoes;
 
         try {
-            avaliacoes = restTemplate.getForObject(url, Avaliacao[].class, parametros);
+            avaliacoes = restTemplate.getForObject(URL + produtoId, Avaliacao[].class);
         } catch (Exception e) {
             logger.error("Erro ao buscar avaliações");
             throw e;
