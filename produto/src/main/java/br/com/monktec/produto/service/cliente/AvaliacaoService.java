@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.*;
 
@@ -26,21 +25,13 @@ public class AvaliacaoService {
     @CircuitBreaker(name = "avaliacaoCB", fallbackMethod = "buscarTodosPorProdutoCache")
     public List<Avaliacao> buscarTodosPorProduto(Long produtoId) {
 
-        final String URL = "http://localhost:8080/avaliacoes/produtoId/";
-//        String url = UriComponentsBuilder
-//                .fromHttpUrl("http://localhost:8080/avaliacoes")
-//                .queryParam("produtoId", "{produtoId}")
-//                .encode()
-//                .toUriString();
-
-//        final Map<String, Object> parametros = new HashMap<>();
-//        parametros.put("produtoId", produtoId);
+        final String URL = "http://localhost:8080/avaliacoes/produtoId/" + produtoId;
 
         logger.info("Buscando avaliações");
         final Avaliacao[] avaliacoes;
 
         try {
-            avaliacoes = restTemplate.getForObject(URL + produtoId, Avaliacao[].class);
+            avaliacoes = restTemplate.getForObject(URL, Avaliacao[].class);
         } catch (Exception e) {
             logger.error("Erro ao buscar avaliações");
             throw e;

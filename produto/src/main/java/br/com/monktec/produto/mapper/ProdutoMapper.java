@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ProdutoMapper {
 
-    public static ProdutoResponse converterProdutoToresponse(Produto produto, List<Avaliacao> avaliacoes){
+    public static ProdutoResponse converterProdutoToResponse(Produto produto, List<Avaliacao> avaliacoes){
         ProdutoResponse produtoResponse = new ProdutoResponse();
         produtoResponse.setId(produto.getId());
         produtoResponse.setNome(produto.getNome());

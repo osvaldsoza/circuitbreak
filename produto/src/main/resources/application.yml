@@ -2,7 +2,7 @@ server:
   port: 8090
 spring:
   datasource:
-    password: osf77
+    password: cb123
     url: jdbc:postgresql://localhost/circuitbreak?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: postgres
   jpa:
