@@ -1,4 +1,5 @@
 # Exemplo de implementação do Circuitbreak
+### O serviço de Produto irá fazer uma requisição no serviço de Avaliação
 
 ## Tecnologias
 ### Resilience4j
