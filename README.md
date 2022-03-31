@@ -1,6 +1,6 @@
 # Exemplo de implementação do Circuitbreak
 
-## Tecnoligias
+## Tecnologias
 ### Resilience4j
 ### RestTemplate
 ### Postgres
